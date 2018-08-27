@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+
+<decorators defaultdir="/layout/">
+    <!--先定义不过滤的页面，即排除页面 -->
+    <!--<excludes>
+        <pattern>/assets/*</pattern>
+    </excludes>
+
+    &lt;!&ndash;定义需要修饰的页面 &ndash;&gt;
+    <decorator name="phone" page="Phone_tpl.jsp">
+        <pattern>/*</pattern>
+    </decorator>-->
+
+
+</decorators>
