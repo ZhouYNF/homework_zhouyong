@@ -9,6 +9,14 @@
     <%@include file="layout/Phone_res_post.jsp"%>
 </head>
 <body>
+<div class="col-md-6 column">
+    <form role="form" class="form-inline" action="/PhoneSearch" method="get">
+        <div class="form-group">
+            <input type="text" size="60" class="form-control" id="search" placeholder="搜一下" name="condition"/>
+            <input type="submit" class="btn btn-primary" value="搜索"/>
+        </div>
+    </form>
+</div>
     <table class="table table-striped">
         <tr>
             <th>id</th>
@@ -31,9 +39,18 @@
         </c:forEach>
     </table>
     <div style="margin-top: 2em;">
-
-        <a class="btn btn-primary" href="<c:url value="/Phoneadd" />">增加新的书籍</a>
+        <a href="#" id="addphone">添加新手机</a>
     </div>
+    <div id="modal"></div>
     <%@ include file="Phone_update_modal.jsp" %>
+<script>
+    $(function(){
+        $("#addphone").on("click",function(){
+            $("#modal").load("Phone_add.jsp",function(){
+                $('#addPhone').modal('show');
+            });
+        });
+    });
+</script>
 </body>
 </html>

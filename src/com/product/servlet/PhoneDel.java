@@ -17,7 +17,7 @@ public class PhoneDel extends HttpServlet {
         int id= Integer.parseInt(req.getParameter("id"));
         PhoneDAO phoneDAO=new PhoneInMemoryDAO();
          if(phoneDAO.delete(id)){
-             System.out.println("删除成功");
+
          }
          resp.sendRedirect("/phones");
 

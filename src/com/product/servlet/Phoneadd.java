@@ -34,7 +34,5 @@ public class Phoneadd extends HttpServlet {
 
         PhoneDAO phoneDAO=new PhoneInMemoryDAO();
         phoneDAO.add(phone);
-
-        resp.sendRedirect("");
     }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class PhoneInMemoryDAO implements PhoneDAO {
     private static List<Phone> phoneDB=new ArrayList();
-    {
+    static{
         Phone p1 = new Phone(1, "华为10", 3000, 20, "华为科技有限公司","xxxxx");
         Phone p2 = new Phone(2, "小米6", 2500, 20, "小米科技有限公司","xxxxx");
         Phone p3 = new Phone(3, "魅族6", 3500, 20, "魅族科技有限公司","xxxxx");
@@ -37,14 +37,14 @@ public class PhoneInMemoryDAO implements PhoneDAO {
 
     @Override
     public List <Phone> getPhonesByName(String name) {
-        ArrayList<Phone> phones=new ArrayList <>();
+        ArrayList<Phone> phones=new ArrayList <Phone>();
         for (Phone phone : phoneDB) {
             String realName=phone.getName().toLowerCase();
             if (realName.contains(name.toLowerCase())){
                 phones.add(phone);
             }
         }
-        return null;
+        return phones;
     }
 
     @Override

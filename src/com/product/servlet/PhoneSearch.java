@@ -20,14 +20,14 @@ public class PhoneSearch extends HttpServlet {
         resp.setContentType("text/html;charset=utf-8");
 
         String condition = req.getParameter("condition");
-
+        System.out.println(condition);
         PhoneDAO phoneDAO=new PhoneInMemoryDAO();
-        List<Phone> books = phoneDAO.getPhonesByName(condition);
+        List<Phone> phones = phoneDAO.getPhonesByName(condition);
 
-        req.setAttribute("books", books);
+        req.setAttribute("phones", phones);
 
         req.getSession().setAttribute("msg", "当前查询条件为:[" + condition + "]");
 
-        req.getRequestDispatcher("/").forward(req,resp);
+        req.getRequestDispatcher("/Phone_list.jsp").forward(req,resp);
     }
 }

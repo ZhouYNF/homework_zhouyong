@@ -64,14 +64,15 @@
         var id = $(e.relatedTarget).data("id");
         $.ajax({
             method: "get",
-            url: "<c:url value="/json/book" />",
+            url: "<c:url value="/PhoneUpdate" />",
             data: {id: id}
         }).done(function (data, bbb, ccc) {
             $("#PhoneID").val(data.id);
             $("#Phonename").val(data.name);
-            $("#Phonenumber").val(data.price);
-            $("#manufacturer").val(data.author);
-            $("#picture").val(data.press);
+            $("#Phoneprice").val(data.price);
+            $("#Phonenumber").val(data.number);
+            $("#manufacturer").val(data.manufacturer);
+            $("#picture").val(data.picture);
         }).fail(function (xhr, textStatus, errorThrown) {
             console.error(errorThrown);
         }).always(function () {

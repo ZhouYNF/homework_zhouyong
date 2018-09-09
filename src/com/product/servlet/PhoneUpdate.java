@@ -16,11 +16,15 @@ import java.io.IOException;
 public class PhoneUpdate extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("id"));
+        req.setCharacterEncoding("utf-8");
+        resp.setContentType("application/json;charset=utf-8");
+
         PhoneDAO phoneDAO = new PhoneInMemoryDAO();
-        Phone phone = phoneDAO.getPhoneById(id);
-        req.setAttribute("phone", phone);
-        req.getRequestDispatcher("/Phone_update_modal.jsp").forward(req, resp);
+        Phone phone = phoneDAO.getPhoneById(Integer.parseInt(req.getParameter("id")));
+
+        String requ = "{\"id\":" + phone.getId() + ",\"name\":\"" + phone.getName() + "\",\"price\":\"" + phone.getPrice() + "\",\"number\":\"" + phone.getNumber() + "\",\"manufacturer\":\"" + phone.getManufacturer() + "\",\"picture\":\""+phone.getPicture()+"\"}";
+
+        resp.getWriter().print(requ);
     }
 
     @Override
@@ -42,6 +46,6 @@ public class PhoneUpdate extends HttpServlet {
         HttpSession session = req.getSession();
         session.setAttribute("msg", "更新成功！");
 
-        resp.sendRedirect("");
+        resp.sendRedirect("/phones");
     }
 }
